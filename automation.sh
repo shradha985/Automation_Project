@@ -45,4 +45,8 @@ then
     size=$(du -h /tmp/${name}-httpd-logs-${timestamp}.tar | awk '{print $1}')
 	echo -e "httpd-logs\t-\t${timestamp}\t-\ttar\t-\t${size}" >> ${apacheroot}/inventory.html
 fi
+if [[ ! -f /etc/cron.d/Automation ]];
+then
+    sudo echo " * * * * * root /root/Automation_Project/Automation.sh" >> /etc/cron.d/Automation
+fi
 
